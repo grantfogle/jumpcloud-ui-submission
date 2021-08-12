@@ -10,10 +10,12 @@ import {UserService} from '../services/user.service';
 export class UserDashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
   users: Observable<T>;
+  userList: [];
 
   ngOnInit() {
-    this.users = this.userService.getAllUsers().subscribe(users => {
-      console.log(users);
+    this.users = this.userService.getAllUsers().subscribe(response => {
+      this.userList = response.results;
+      console.log(response);
     });
   }
 

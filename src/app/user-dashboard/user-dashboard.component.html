@@ -1,5 +1,12 @@
 <div class="container">
-  <p>
-    user-dashboard works!
-  </p>  
+  <table class="table table-stripped">
+    <thead>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <!-- <th scope="col">User Email</th> -->
+    </thead>
+    <tbody>
+      <app-user-row *ngFor="let user of userList" ></app-user-row>
+    </tbody>
+  </table>
 </div>
