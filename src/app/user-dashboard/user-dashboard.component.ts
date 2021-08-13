@@ -20,4 +20,7 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
+  deleteSelectedUser(id) {
+    this.userService.deleteUser(id);
+  }
 }

@@ -22,6 +22,9 @@ export class UserService {
     }
     // editUser() {}
     deleteUser(userId) {
-        this.http.delete(this.url + userId)
+        console.log('hit', userId)
+        this.http.delete(this.url + '/' + userId).subscribe(response => {
+            console.log('User successfully deleted', response);
+        });
     }
 }
