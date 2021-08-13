@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-row',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-row.component.scss']
 })
 export class UserRowComponent implements OnInit {
+  @Input() userData;
+  showEdit = false;
 
   constructor() { }
 
