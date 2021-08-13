@@ -7,14 +7,17 @@ import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root'})
 export class UserService {
     constructor (private http: HttpClient) { }
+    url = environment.baseUrl + Endpoint.systemUsers;
 
     getAllUsers(): Observable<any> {
-        return this.http.get(environment.baseUrl + Endpoint.systemUsers);
+        return this.http.get(this.url);
     }
 
     createUser(userInfo) {
-        return this.http.post(environment.baseUrl + Endpoint.systemUsers, userInfo);
+        return this.http.post(this.url, userInfo);
     }
     // editUser() {}
-    // deleteUser() {}
+    deleteUser(userId) {
+        this.http.delete(this.url + userId)
+    }
 }
