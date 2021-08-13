@@ -1,3 +1,13 @@
-<p>
-  add-user-form works!
-</p>
+
+<button class="btn btn-primary" (click)="toggleAddUserForm()">Add a New User</button>
+<form *ngIf="displayForm">
+
+  <div class="row">
+    <input class="col-md-4" placeholder="Name"/>
+    <input class="col-md-4" placeholder="Email"/>
+  </div>
+  <div class="row">
+    <button class="col-sm-2 btn btn-success">Submit</button>
+    <button class="col-sm-2 btn btn-primary">Cancel</button>
+  </div>
+</form>

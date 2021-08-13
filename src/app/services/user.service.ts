@@ -12,7 +12,9 @@ export class UserService {
         return this.http.get(environment.baseUrl + Endpoint.systemUsers);
     }
 
+    createUser(userInfo) {
+        return this.http.post(environment.baseUrl + Endpoint.systemUsers, userInfo);
+    }
     // editUser() {}
     // deleteUser() {}
-    // createUser() {}
 }
