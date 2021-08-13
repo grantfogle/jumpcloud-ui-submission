@@ -1,13 +1,28 @@
-
 <button class="btn btn-primary" (click)="toggleAddUserForm()">Add a New User</button>
-<form *ngIf="displayForm">
-
+<form *ngIf="displayForm" (ngSubmit)="submitNewUser()"  #newUserForm>
   <div class="row">
-    <input class="col-md-4" placeholder="Name"/>
-    <input class="col-md-4" placeholder="Email"/>
+    <label class="col-md-4" for="username">Username</label>
+    <input 
+      class="col-md-4"
+      type="text"
+      name="username"
+      [(ngModel)]="username"
+      placeholder="Please enter a username"
+      required/>
   </div>
   <div class="row">
-    <button class="col-sm-2 btn btn-success">Submit</button>
-    <button class="col-sm-2 btn btn-primary">Cancel</button>
+    <label class="col-md-4" for="userEmail">Email</label>
+    <input 
+      class="col-md-4"
+      type="email" 
+      name="userEmail"
+      placeholder="Please enter a valid email"
+      [(ngModel)]="email"
+      required/>
+  </div>
+  <h6 class="text-info" *ngIf="newUserForm.userEmail.touched && !newUserForm.valid">Please enter a valid email</h6>
+  <div class="row button-row">
+    <button class="col-md-2 btn btn-success" type="submit">Submit</button>
+    <button class="col-md-2 btn btn-primary" (click)="cancelFormSubmit()">Cancel</button>
   </div>
 </form>

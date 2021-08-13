@@ -14,7 +14,11 @@ export class UserService {
     }
 
     createUser(userInfo) {
-        return this.http.post(this.url, userInfo);
+        console.log('bing', userInfo);
+        this.http.post(this.url, userInfo).subscribe(response => {
+            console.log('response', response);
+        });
+        // return this.http.post(this.url, userInfo);
     }
     // editUser() {}
     deleteUser(userId) {
