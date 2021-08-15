@@ -17,6 +17,11 @@ export class UserService {
         console.log('bing', userInfo);
         this.http.post(this.url, userInfo).subscribe(response => {
             console.log('response', response);
+            if (response['state'] === 'ACTIVATED') {
+                console.log('boom');
+                return this.getAllUsers();
+            }
+            // if () then get all users
         });
     }
     updateUser(userId, userInfo) {

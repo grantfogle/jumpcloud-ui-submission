@@ -1,19 +1,17 @@
 <button class="btn btn-primary" (click)="toggleAddUserForm()">Add a New User</button>
-<form *ngIf="displayForm" (ngSubmit)="submitNewUser()" #newUserForm>
+<form class="col-sm-12" *ngIf="displayForm" (ngSubmit)="submitNewUser()" #newUserForm>
   <div class="row">
-    <label class="col-md-4" for="firstname">First Name</label>
+    <label class="col-sm-2" for="firstname">First Name</label>
     <input 
-      class="col-md-4"
+      class="col-sm-4"
       type="text"
       name="firstname"
       [(ngModel)]="firstname"
       placeholder="Please enter your first name"
       required/>
-  </div>
-  <div class="row">
-    <label class="col-md-4" for="lastname">Last Name</label>
-    <input 
-      class="col-md-4"
+      <label class="col-sm-2" for="lastname">Last Name</label>
+      <input 
+      class="col-sm-4"
       type="text"
       name="lastname"
       [(ngModel)]="lastname"
@@ -21,26 +19,24 @@
       required/>
   </div>
   <div class="row">
-    <label class="col-md-4" for="username">Username</label>
+    <label class="col-sm-2" for="username">Username</label>
     <input 
-      class="col-md-4"
-      type="text"
-      name="username"
-      [(ngModel)]="username"
-      placeholder="Please enter a username"
-      required/>
+        class="col-sm-4"
+        type="text"
+        name="username"
+        [(ngModel)]="username"
+        placeholder="Please enter a username"
+        required/>
+      <label class="col-sm-2" for="userEmail">Email</label>
+      <input 
+        class="col-sm-4"
+        type="email" 
+        name="userEmail"
+        placeholder="Please enter a valid email"
+        [(ngModel)]="email"
+        required/>
   </div>
-  <div class="row">
-    <label class="col-md-4" for="userEmail">Email</label>
-    <input 
-      class="col-md-4"
-      type="email" 
-      name="userEmail"
-      placeholder="Please enter a valid email"
-      [(ngModel)]="email"
-      required/>
-  </div>
-  <h6 class="text-info" *ngIf="newUserForm.userEmail.touched && !newUserForm.valid">Please enter a valid email</h6>
+  <!-- <h6 class="text-info" *ngIf="newUserForm.userEmail.touched && !newUserForm.valid">Please enter a valid email</h6> -->
   <div class="row button-row">
     <button class="col-md-2 btn btn-success" type="submit">Submit</button>
     <button class="col-md-2 btn btn-primary" (click)="cancelFormSubmit()">Cancel</button>

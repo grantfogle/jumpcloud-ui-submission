@@ -9,7 +9,7 @@ import {UserService} from '../services/user.service';
 })
 export class UserDashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
-  // users: Observable<T>;
+  // getUserObs: Observable<T>;
   userList: [];
   showEdit = false;
   selectedUserId = '';
@@ -32,19 +32,6 @@ export class UserDashboardComponent implements OnInit {
     } else {
       this.selectedUserId = '';
     }
-  }
-
-  submitUpdateUserInfo(id) {
-    console.log(id);
-    const updatedUser = {
-      id,
-      // username,
-      // firstname,
-      // lastname
-    }
-    const userToUpdate = this.userList.filter(user => user["id"] === id);
-    this.userService.updateUser(id, updatedUser)
-    console.log(userToUpdate, this.userList);
   }
 
 }

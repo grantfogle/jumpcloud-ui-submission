@@ -1,6 +1,15 @@
 <div class="container dashboard text-center">
   <h1>Your Jumpcloud Users</h1>
   <div class="row">
+    <div class="headers col-md-12">
+      <div class="headers row">
+          <h6 class="col-sm-2">First Name</h6>
+          <h6 class="col-sm-2">Last Name</h6>
+          <h6 class="col-sm-2">Username</h6>
+          <h6 class="col-sm-3">Email</h6>
+          <h6 class="col-sm-3">Action</h6>
+      </div>
+    </div>
     <table class="table table-stripped">
       <thead>
         <tr>
@@ -12,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userList; let indexOfelement=index;">
+        <tr *ngFor="let user of userList">
           <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.firstname}}</td>
           <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.lastname}}</td>
           <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.username}}</td>
@@ -24,12 +33,17 @@
           <td>
           <app-update-user-form 
             *ngIf="showEdit && selectedUserId === user.id"
-            [user]="user"></app-update-user-form>
+            [user]="user"
+            (closeUpdateUserForm)="toggleShowEdit()"></app-update-user-form>
           </td>
         </tr>
       </tbody>
     </table>
+    <!-- <div class="table-body">
+    </div> -->
   </div>
 
-  <app-add-user-form></app-add-user-form>
+  <div class="row">
+    <app-add-user-form></app-add-user-form>
+  </div>
 </div>
