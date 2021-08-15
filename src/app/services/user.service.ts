@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, GroupedObservable } from 'rxjs';
 import { Endpoint } from '../shared/endpoints'
 import { environment } from '../../environments/environment';
 
@@ -18,13 +18,16 @@ export class UserService {
         this.http.post(this.url, userInfo).subscribe(response => {
             console.log('response', response);
         });
-        // return this.http.post(this.url, userInfo);
     }
-    // editUser() {}
+    updateUser(userId, userInfo) {
+        return this.http.put(this.url + '/' + userId, userInfo);
+        // if response is good, get all users
+    }
+
     deleteUser(userId) {
-        console.log('hit', userId)
         this.http.delete(this.url + '/' + userId).subscribe(response => {
             console.log('User successfully deleted', response);
+            // if response is goood, get all users
         });
     }
 }

@@ -7,15 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { UserRowComponent } from './user-dashboard/user-row/user-row.component';
 import { AddUserFormComponent } from './user-dashboard/add-user-form/add-user-form.component';
+import { UpdateUserFormComponent } from './user-dashboard/update-user-form/update-user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
-    UserRowComponent,
-    AddUserFormComponent
+    AddUserFormComponent,
+    UpdateUserFormComponent
   ],
   imports: [
     BrowserModule,

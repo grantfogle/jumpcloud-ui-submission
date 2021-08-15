@@ -1,0 +1,40 @@
+<form class="row" (ngSubmit)="updateUser()">
+    <div class="col-xs-2">
+        <label>First Name</label>
+        <input 
+          type="text"
+          name="firstname"
+          [(ngModel)]="user.firstname"
+          required>
+    </div>
+    <div class="col-xs-2">
+        <label>Last Name</label>
+        <input 
+          type="text"
+          name="lastname"
+          [(ngModel)]="user.lastname"
+          required
+          >
+    </div>
+    <div class="col-xs-2">
+        <label>Username</label>
+        <input 
+          type="text"
+          name="username"
+          [(ngModel)]="user.username"
+          required>
+    </div>
+    <div class="col-xs-3">
+        <label>Email</label>
+        <input
+          type="email" 
+          name="email"
+          [(ngModel)]="user.email"
+          required
+          >
+    </div>
+    <div class="col-xs-3">
+      <button class="btn btn-success" type="submit">Submit</button>
+        <button class="btn btn-primary" (click)="cancelFormSubmit()">Cancel</button>
+    </div>
+</form>

@@ -12,6 +12,7 @@ export class UserDashboardComponent implements OnInit {
   // users: Observable<T>;
   userList: [];
   showEdit = false;
+  selectedUserId = '';
 
   ngOnInit() {
     this.userService.getAllUsers().subscribe(response => {
@@ -23,4 +24,27 @@ export class UserDashboardComponent implements OnInit {
   deleteSelectedUser(id) {
     this.userService.deleteUser(id);
   }
+
+  toggleShowEdit(id) {
+    this.showEdit = !this.showEdit;
+    if (this.showEdit) {
+      this.selectedUserId = id;
+    } else {
+      this.selectedUserId = '';
+    }
+  }
+
+  submitUpdateUserInfo(id) {
+    console.log(id);
+    const updatedUser = {
+      id,
+      // username,
+      // firstname,
+      // lastname
+    }
+    const userToUpdate = this.userList.filter(user => user["id"] === id);
+    this.userService.updateUser(id, updatedUser)
+    console.log(userToUpdate, this.userList);
+  }
+
 }

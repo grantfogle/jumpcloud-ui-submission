@@ -1,4 +1,4 @@
-<div class="container dashboard">
+<div class="container dashboard text-center">
   <h1>Your Jumpcloud Users</h1>
   <div class="row">
     <table class="table table-stripped">
@@ -12,14 +12,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userList">
-          <td><input *ngIf="showEdit" value="user.userfirstNam" />{{user.firstname}}</td>
-          <td><input *ngIf="showEdit" />{{user.lastname}}</td>
-          <td><input *ngIf="showEdit" />{{user.username}}</td>
-          <td><input *ngIf="showEdit" />{{user.email}}</td>
-          <td><button class="btn btn-warning">Edit</button>
-            <button class="btn btn-success" *ngIf="showEdit">Submit</button>
+        <tr *ngFor="let user of userList; let indexOfelement=index;">
+          <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.firstname}}</td>
+          <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.lastname}}</td>
+          <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.username}}</td>
+          <td *ngIf="!showEdit || selectedUserId !== user.id">{{user.email}}</td>
+          <td *ngIf="!showEdit || selectedUserId !== user.id">
+            <button class="btn btn-warning" (click)="toggleShowEdit(user.id)">Edit</button>
             <button class="btn btn-danger" (click)="deleteSelectedUser(user.id)">Delete</button>
+          </td>
+          <td>
+          <app-update-user-form 
+            *ngIf="showEdit && selectedUserId === user.id"
+            [user]="user"></app-update-user-form>
           </td>
         </tr>
       </tbody>

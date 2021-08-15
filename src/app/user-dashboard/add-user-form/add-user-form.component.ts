@@ -9,6 +9,8 @@ import { UserService } from '../../services/user.service';
 })
 export class AddUserFormComponent implements OnInit {
   displayForm = false;
+  firstname = '';
+  lastname = ''
   username = '';
   email = '';
   
@@ -24,29 +26,25 @@ export class AddUserFormComponent implements OnInit {
   }
 
   resetForm() {
-    // this.newUser = {
-    //   username: '',
-    //   email: ''
-    // }
+    this.firstname = '';
+    this.lastname = ''
+    this.username = '';
+    this.email = '';
   }
 
   submitNewUser() {
-    console.log(this.newUserForm);
-    console.log('bam', this.username, this.email);
     const newUser = {
       email: this.email,
       username: this.username,
-      firstname: 'grant',
-      lastname: 'grant',
+      firstname: this.firstname,
+      lastname: this.lastname,
     }
-    // if (this.newUserForm.valid) {
       this.userService.createUser(newUser);
-    // }
+      this.resetForm();
   }
 
   cancelFormSubmit() {
-    this.email = '';
-    this.username= '';
+    this.resetForm()
     this.displayForm = false;
   }
     // emit event

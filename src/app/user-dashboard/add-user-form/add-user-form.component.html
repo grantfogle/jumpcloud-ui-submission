@@ -1,5 +1,25 @@
 <button class="btn btn-primary" (click)="toggleAddUserForm()">Add a New User</button>
-<form *ngIf="displayForm" (ngSubmit)="submitNewUser()"  #newUserForm>
+<form *ngIf="displayForm" (ngSubmit)="submitNewUser()" #newUserForm>
+  <div class="row">
+    <label class="col-md-4" for="firstname">First Name</label>
+    <input 
+      class="col-md-4"
+      type="text"
+      name="firstname"
+      [(ngModel)]="firstname"
+      placeholder="Please enter your first name"
+      required/>
+  </div>
+  <div class="row">
+    <label class="col-md-4" for="lastname">Last Name</label>
+    <input 
+      class="col-md-4"
+      type="text"
+      name="lastname"
+      [(ngModel)]="lastname"
+      placeholder="Please enter your lastname"
+      required/>
+  </div>
   <div class="row">
     <label class="col-md-4" for="username">Username</label>
     <input 
