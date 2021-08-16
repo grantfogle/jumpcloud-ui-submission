@@ -10,7 +10,7 @@ import { UserService } from '../../services/user.service';
 export class AddUserFormComponent {
   displayForm = false;
   firstname = '';
-  lastname = ''
+  lastname = '';
   username = '';
   email = '';
   @Output() addUserToUserList = new EventEmitter();
@@ -25,7 +25,7 @@ export class AddUserFormComponent {
 
   resetForm() {
     this.firstname = '';
-    this.lastname = ''
+    this.lastname = '';
     this.username = '';
     this.email = '';
   }
@@ -56,7 +56,7 @@ export class AddUserFormComponent {
   }
 
   cancelFormSubmit() {
-    this.resetForm()
+    this.resetForm();
     this.displayForm = false;
   }
 }

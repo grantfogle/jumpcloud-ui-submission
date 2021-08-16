@@ -12,14 +12,14 @@
     </div>
     <hr>
     <div class="table-body">
-      <div class="table-row" *ngFor="let user of userList">
+      <div class="table-body__row" *ngFor="let user of userList">
         
         <div class="row" *ngIf="!showEdit || selectedUserId !== user.id">
           <p class="col-sm-2">{{user.firstname}}</p>
           <p class="col-sm-2">{{user.lastname}}</p>
           <p class="col-sm-2">{{user.username}}</p>
           <p class="col-sm-3">{{user.email}}</p>
-          <div class="col-sm-3 table-row__buttons">
+          <div class="col-sm-3 table-body__row__buttons">
               <button 
                 class="btn btn-warning"
                 (click)="toggleShowEdit(user.id)">Edit</button>

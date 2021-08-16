@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, GroupedObservable } from 'rxjs';
-import { Endpoint } from '../shared/endpoints'
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Endpoint } from '../shared/endpoints';
 import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root'})
@@ -13,16 +13,15 @@ export class UserService {
         return this.http.get(this.url);
     }
 
-    createUser(userInfo) {
-        console.log('bing', userInfo);
+    createUser(userInfo): Observable<any> {
         return this.http.post(this.url, userInfo);
     }
-    
-    updateUser(userId, userInfo) {
+
+    updateUser(userId, userInfo): Observable<any> {
         return this.http.put(this.url + '/' + userId, userInfo);
     }
 
-    deleteUser(userId) {
+    deleteUser(userId): Observable<any> {
         return this.http.delete(this.url + '/' + userId);
     }
 }
