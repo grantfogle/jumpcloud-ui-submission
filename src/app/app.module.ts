@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AddUserFormComponent } from './user-dashboard/add-user-form/add-user-form.component';
 import { UpdateUserFormComponent } from './user-dashboard/update-user-form/update-user-form.component';
+import { UserRowComponent } from './user-dashboard/user-row/user-row.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDashboardComponent,
     AddUserFormComponent,
-    UpdateUserFormComponent
+    UpdateUserFormComponent,
+    UserRowComponent
   ],
   imports: [
     BrowserModule,

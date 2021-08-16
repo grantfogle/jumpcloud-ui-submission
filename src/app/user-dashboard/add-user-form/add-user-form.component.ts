@@ -18,7 +18,6 @@ export class AddUserFormComponent {
 
   constructor(private userService: UserService) { }
 
-
   toggleAddUserForm() {
     this.displayForm = !this.displayForm;
   }

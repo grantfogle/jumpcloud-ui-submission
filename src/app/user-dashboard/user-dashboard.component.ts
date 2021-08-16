@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
 import {UserService} from '../services/user.service';
 import {User} from '../shared/user.model';
 
@@ -20,18 +19,18 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
-  deleteSelectedUser(id) {
-    this.userService.deleteUser(id).subscribe(response => {
+  deleteSelectedUser($event) {
+    this.userService.deleteUser($event.id).subscribe(response => {
       if (response) {
-        this.userList = this.userList.filter(user => user.id !== id);
+        this.userList = this.userList.filter(user => user.id !== $event.id);
       }
     });
   }
 
-  toggleShowEdit(id) {
+  toggleShowEdit($event) {
     this.showEdit = !this.showEdit;
     if (this.showEdit) {
-      this.selectedUserId = id;
+      this.selectedUserId = $event.id;
     } else {
       this.selectedUserId = '';
     }
