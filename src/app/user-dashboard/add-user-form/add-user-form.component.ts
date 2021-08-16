@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
@@ -13,6 +13,7 @@ export class AddUserFormComponent {
   lastname = ''
   username = '';
   email = '';
+  @Output() addUserToUserList = new EventEmitter();
   @ViewChild('newUserForm') newUserForm: NgForm;
 
   constructor(private userService: UserService) { }
@@ -30,14 +31,28 @@ export class AddUserFormComponent {
   }
 
   submitNewUser() {
-    const newUser = {
-      email: this.email,
-      username: this.username,
-      firstname: this.firstname,
-      lastname: this.lastname,
+    if (this.firstname && this.lastname && this.username && this.email) {
+      const newUser = {
+        email: this.email,
+        username: this.username,
+        firstname: this.firstname,
+        lastname: this.lastname,
+      }
+        this.userService.createUser(newUser).subscribe(response => {
+          if (response) {
+            const returnedUser = {
+              id: response['id'],
+              firstname: response['firstname'],
+              lastname: response['lastname'],
+              username: response['username'],
+              email: response['email']
+            }
+            this.resetForm();
+            this.displayForm = false;
+            this.addUserToUserList.emit({event: event, user: returnedUser});
+          }
+        });
     }
-      this.userService.createUser(newUser);
-      this.resetForm();
   }
 
   cancelFormSubmit() {

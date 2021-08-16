@@ -15,24 +15,14 @@ export class UserService {
 
     createUser(userInfo) {
         console.log('bing', userInfo);
-        this.http.post(this.url, userInfo).subscribe(response => {
-            console.log('response', response);
-            if (response['state'] === 'ACTIVATED') {
-                console.log('boom');
-                return this.getAllUsers();
-            }
-            // if () then get all users
-        });
+        return this.http.post(this.url, userInfo);
     }
+    
     updateUser(userId, userInfo) {
         return this.http.put(this.url + '/' + userId, userInfo);
-        // if response is good, get all users
     }
 
     deleteUser(userId) {
-        this.http.delete(this.url + '/' + userId).subscribe(response => {
-            console.log('User successfully deleted', response);
-            // if response is goood, get all users
-        });
+        return this.http.delete(this.url + '/' + userId);
     }
 }

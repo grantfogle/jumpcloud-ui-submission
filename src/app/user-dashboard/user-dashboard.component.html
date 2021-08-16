@@ -13,6 +13,7 @@
     <hr>
     <div class="table-body">
       <div class="table-row" *ngFor="let user of userList">
+        
         <div class="row" *ngIf="!showEdit || selectedUserId !== user.id">
           <p class="col-sm-2">{{user.firstname}}</p>
           <p class="col-sm-2">{{user.lastname}}</p>
@@ -27,17 +28,19 @@
                 (click)="deleteSelectedUser(user.id)">Delete</button>
           </div>
         </div>
+
         <app-update-user-form 
             *ngIf="showEdit && selectedUserId === user.id"
             [user]="user"
             (closeUpdateUserForm)="toggleShowEdit()"></app-update-user-form>
+
       </div>
     </div>
   </div>
   <hr>
 
   <div class="row">
-    <app-add-user-form></app-add-user-form>
+    <app-add-user-form (addUserToUserList)="addUser($event)"></app-add-user-form>
   </div>
 
 </div>

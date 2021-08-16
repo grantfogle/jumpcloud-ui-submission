@@ -9,7 +9,6 @@ import {UserService} from '../services/user.service';
 })
 export class UserDashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
-  // getUserObs: Observable<T>;
   userList: [];
   showEdit = false;
   selectedUserId = '';
@@ -17,12 +16,16 @@ export class UserDashboardComponent implements OnInit {
   ngOnInit() {
     this.userService.getAllUsers().subscribe(response => {
       this.userList = response.results;
-      console.log(response);
     });
   }
 
   deleteSelectedUser(id) {
-    this.userService.deleteUser(id);
+    this.userService.deleteUser(id).subscribe(response => {
+      if (response) {
+        // throwing error because i have not created a model for user list array
+        this.userList = this.userList.filter(user => user.id !== id);
+      }
+    });
   }
 
   toggleShowEdit(id) {
@@ -32,6 +35,11 @@ export class UserDashboardComponent implements OnInit {
     } else {
       this.selectedUserId = '';
     }
+  }
+
+  addUser($event) {
+    console.log($event.user)
+    this.userList.push($event.user);
   }
 
 }
