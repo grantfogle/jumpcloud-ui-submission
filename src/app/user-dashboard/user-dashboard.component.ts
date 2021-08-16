@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {UserService} from '../services/user.service';
+import {User} from '../shared/user.model';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -9,7 +10,7 @@ import {UserService} from '../services/user.service';
 })
 export class UserDashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
-  userList: [];
+  userList: User[];
   showEdit = false;
   selectedUserId = '';
 
@@ -22,7 +23,6 @@ export class UserDashboardComponent implements OnInit {
   deleteSelectedUser(id) {
     this.userService.deleteUser(id).subscribe(response => {
       if (response) {
-        // throwing error because i have not created a model for user list array
         this.userList = this.userList.filter(user => user.id !== id);
       }
     });
@@ -38,7 +38,6 @@ export class UserDashboardComponent implements OnInit {
   }
 
   addUser($event) {
-    console.log($event.user)
     this.userList.push($event.user);
   }
 
