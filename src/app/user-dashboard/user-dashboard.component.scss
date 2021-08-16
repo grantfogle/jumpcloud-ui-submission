@@ -4,8 +4,15 @@
     padding: 3em;
 }
 
+.table-row {
+    &__buttons {
+        button {
+            margin-right: 1em;
+        }
+    }
+}
+
 .headers {
     padding-top: 1em;
-    // border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
@@ -7,19 +7,16 @@ import { UserService } from '../../services/user.service';
   templateUrl: './add-user-form.component.html',
   styleUrls: ['./add-user-form.component.scss']
 })
-export class AddUserFormComponent implements OnInit {
+export class AddUserFormComponent {
   displayForm = false;
   firstname = '';
   lastname = ''
   username = '';
   email = '';
-  
   @ViewChild('newUserForm') newUserForm: NgForm;
 
   constructor(private userService: UserService) { }
 
-  ngOnInit() {
-  }
 
   toggleAddUserForm() {
     this.displayForm = !this.displayForm;
@@ -47,8 +44,4 @@ export class AddUserFormComponent implements OnInit {
     this.resetForm()
     this.displayForm = false;
   }
-    // emit event
-    // call service
-    // clear user data
-    // pass to parent component so we have a new user added without having to make call to db
 }

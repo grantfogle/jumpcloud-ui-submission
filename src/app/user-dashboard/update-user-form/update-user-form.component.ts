@@ -19,17 +19,11 @@ export class UpdateUserFormComponent implements OnInit {
   }
 
   updateUser() {
-    // if (this.updateUserForm.valid) {
-      // handle error
-      const submitUpdatedUser = this.userService.updateUser(this.user.id, this.user).subscribe(response => {
-        console.log(response);     
+      this.userService.updateUser(this.user.id, this.user).subscribe(response => {
         if (response) {
           this.closeUpdateUserForm.emit();   
         }
       });
-      console.log(submitUpdatedUser);
-      // this.closeUpdateUserForm.emit();
-    // }
   }
 
 }
